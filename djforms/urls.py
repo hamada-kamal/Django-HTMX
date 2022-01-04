@@ -7,8 +7,7 @@ from booksApp.views import (
     detail_book, 
     update_book,
     delete_book,
-    detail_author,
-    update_author,
+
 )
 
 
@@ -19,8 +18,6 @@ urlpatterns = [
     path('htmx/book/<pk>/', detail_book, name="detail-book"),
     path('htmx/book/<pk>/update/', update_book, name="update-book"),
     path('htmx/book/<pk>/delete/', delete_book, name="delete-book"),
-    path('htmx/author/<pk>/', detail_author, name="detail-author"),
-    path('htmx/author/<pk>/update/', update_author, name="update-author"),
     path('<pk>/', create_book,name="create-book"),
     
 

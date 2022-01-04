@@ -67,28 +67,3 @@ def delete_book(request,pk):
     return HttpResponse('')
 
 
-def detail_author(request,pk):
-    author = Author.objects.get(pk=pk)
-    books = Book.objects.filter(author=author)
-    context = {
-        "author": author,
-        "books": books,
-    }
-    return render(request, 'partials/author_detail.html', context)
-
-
-def update_author(request,pk):
-    author = Author.objects.get(pk=pk)
-    books = Book.objects.filter(author=author)
-    form = AuthorForm(request.POST or None,instance=author)
-    if request.method=="POST":
-        if form.is_valid():
-            author = form.save()
-            # return redirect("detail-author", pk=author.id)
-            return redirect("create-book",pk=author.id)
-        context = {
-            "form": form,
-            "author": author,
-            "books": books,
-        }
-    return render(request, 'partials/author_form.html', context)
